@@ -4,9 +4,11 @@ public class Jump : MonoBehaviour
 {
     [SerializeField]
     GroundCheck groundCheck;
-    Rigidbody rigidbody; 
-    public float jumpStrength = 2;
+    Rigidbody rigidbody;
+    public float jumpStrength;
     public event System.Action Jumped;
+
+    public PlayerStatistics playerStatistics;
 
 
     void Reset()
@@ -19,14 +21,22 @@ public class Jump : MonoBehaviour
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        playerStatistics.SetJumpPower(playerStatistics.PlayerJumpPower);
+        
     }
 
     void LateUpdate()
     {
         if (Input.GetButtonDown("Jump") && groundCheck.isGrounded)
         {
+         //   jumpStrength = playerStatistics.PlayerJumpPower;
             rigidbody.AddForce(Vector3.up * 100 * jumpStrength);
             Jumped?.Invoke();
         }
+    }
+
+    public void SetJumpPower(float jumpStrength)
+    {
+        this.jumpStrength = jumpStrength;
     }
 }

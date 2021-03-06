@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ItemInteraction : MonoBehaviour
@@ -13,12 +14,23 @@ public class ItemInteraction : MonoBehaviour
     private LayerMask layerMask;
 
     public bool CanBePicked;
+    public bool IsPowerUp;
+    public bool CanBeUsed;
 
     [SerializeField]
     private GameObject pickUpPanel;
 
+    [SerializeField]
+    private GameObject powerUpPanel;
+
+    [SerializeField]
+    private GameObject usePanel;
+
 
     private Ray ray;
+
+    public GameObject selectionObject;
+   // public GameObject selection;
 
     [ContextMenu("ResetRaycast")]
     // Start is called before the first frame update
@@ -33,7 +45,7 @@ public class ItemInteraction : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             ResetRaycast();
-            Debug.Log("Działa raycast reset");
+           // Debug.Log("Działa raycast reset");
         }
 
         SelectItem();
@@ -42,26 +54,62 @@ public class ItemInteraction : MonoBehaviour
     private void SelectItem()
     {
         ray = camera.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(ray.origin, ray.direction * 3f, Color.red);
+        Debug.DrawRay(ray.origin, ray.direction * 2f, Color.red);
 
         RaycastHit hitInfo;
       
-        if (Physics.Raycast(ray, out hitInfo, 3f));
+        if (Physics.Raycast(ray, out hitInfo, 2f));
         {
-            var selection = hitInfo.transform;
+            // var selection = hitInfo.transform;
+            var selection= hitInfo.transform;
             if (selection == null)
             {
+                IsPowerUp = false;
                 CanBePicked = false;
+                CanBeUsed = false;
                 pickUpPanel.SetActive(false);
+                powerUpPanel.SetActive(false);
+                usePanel.SetActive(false);
+
+                selectionObject = null;
+
+                //  selection.GetComponent<ControlMovingPlatform>().isUsed = false;
                 return;
             }
     
             else if (selection.GetComponent<PickUpScript>() != null)
             {
                 CanBePicked = true;
+                IsPowerUp = false;
                 pickUpPanel.SetActive(true);
-                Debug.Log("Dzieje się");
+             //   Debug.Log("Dzieje się");
+                return;
             }
+
+            else if (selection.GetComponent<PowerUpScript>() !=null)
+            {
+                CanBePicked = false;
+                IsPowerUp = true;
+                powerUpPanel.SetActive(true);
+                //  powerUpPanel.GetComponent<TextMeshProUGUI>().text=
+                return;
+            }
+
+            else if (selection.tag == "CanBeUsed")
+            {
+                selectionObject = selection.gameObject;
+
+
+                CanBePicked = false;
+                IsPowerUp = false;
+                CanBeUsed = true;
+                pickUpPanel.SetActive(false);
+                powerUpPanel.SetActive(false);
+                usePanel.SetActive(true);         
+                return;
+            }
+
+           
         }
 
     }

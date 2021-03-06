@@ -8,6 +8,8 @@ public class PickUpScript : MonoBehaviour
 
     public ItemInteraction itemInteraction;
 
+    public PlayerStatistics playerStatistics;
+
     private Rigidbody rg;
 
     public float force;
@@ -24,9 +26,11 @@ public class PickUpScript : MonoBehaviour
         rg = GetComponent<Rigidbody>();
         PlayerHands = GameObject.FindGameObjectWithTag("PlayerHands").transform;
         itemInteraction = FindObjectOfType<ItemInteraction>();
+        playerStatistics = FindObjectOfType<PlayerStatistics>();
         UIManager = FindObjectOfType<UIManager>();
         force = 0f;
-        maxForce = 50f;
+        //  maxForce = 50f;
+        maxForce = playerStatistics.PlayerThrowPower;
     }
 
 
@@ -42,17 +46,19 @@ public class PickUpScript : MonoBehaviour
 
     private void Update()
     {
-        if (itemInteraction.CanBePicked   && IsPicked)
+        if (itemInteraction.CanBePicked  && IsPicked)
         {
+            maxForce = playerStatistics.PlayerThrowPower;
             UIManager.ThrowingUI(0, maxForce);
 
             if (Input.GetMouseButton(1))
             {
-             
+
+               
                 UIManager.ThrowingUI(0, maxForce);
                 Debug.Log("A key or mouse click has been detected");
                 force += Time.deltaTime*15f;
-                Debug.Log(force);
+               // Debug.Log(force);
                 UIManager.ThrowingUI(force, maxForce);
              
             }
@@ -115,9 +121,12 @@ public class PickUpScript : MonoBehaviour
 
         this.gameObject.GetComponent<Collider>().isTrigger = false;
 
-
     }
 
+    public void SetThrowPower(float maxForce)
+    {
+        this.maxForce = maxForce;
+    }
 
 
 }
