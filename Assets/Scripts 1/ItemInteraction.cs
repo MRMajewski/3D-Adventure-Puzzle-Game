@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ItemInteraction : MonoBehaviour
+public class Interaction_PowerUP : MonoBehaviour
 {
     [SerializeField]
     private Camera camera;
@@ -18,16 +18,16 @@ public class ItemInteraction : MonoBehaviour
     public bool CanBeUsed;
 
     [SerializeField]
-    private GameObject pickUpPanel;
+    protected GameObject pickUpPanel;
 
     [SerializeField]
-    private GameObject powerUpPanel;
+    protected GameObject powerUpPanel;
 
     [SerializeField]
-    private GameObject usePanel;
+    protected GameObject usePanel;
 
 
-    private Ray ray;
+    protected Ray ray;
 
     public GameObject selectionObject;
    // public GameObject selection;

@@ -103,10 +103,5 @@ public class RespawnItems : UseTemplate
         }
     }
 
-    private void OnMouseEnter()
-    {
-        textUI.text = "Respawn barrel";
-    }
-
 }
 

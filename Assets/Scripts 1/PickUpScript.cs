@@ -6,7 +6,7 @@ public class PickUpScript : MonoBehaviour
 {
     public Transform PlayerHands;
 
-    public ItemInteraction itemInteraction;
+    public Interaction_PickUp itemInteraction;
 
     public PlayerStatistics playerStatistics;
 
@@ -25,7 +25,7 @@ public class PickUpScript : MonoBehaviour
 
         rg = GetComponent<Rigidbody>();
         PlayerHands = GameObject.FindGameObjectWithTag("PlayerHands").transform;
-        itemInteraction = FindObjectOfType<ItemInteraction>();
+        itemInteraction = FindObjectOfType<Interaction_PickUp>();
         playerStatistics = FindObjectOfType<PlayerStatistics>();
         UIManager = FindObjectOfType<UIManager>();
         force = 0f;
@@ -33,16 +33,6 @@ public class PickUpScript : MonoBehaviour
         maxForce = playerStatistics.PlayerThrowPower;
     }
 
-
-
-    //private void Update()
-    //{
-    //    if (itemInteraction.CanBePicked && Input.GetMouseButtonDown(1) && IsPicked)
-    //    {
-    //        Throw();
-
-    //    }
-    //}
 
     private void Update()
     {

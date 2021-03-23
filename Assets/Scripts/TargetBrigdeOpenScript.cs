@@ -29,7 +29,7 @@ public class TargetBrigdeOpenScript : MonoBehaviour
 
         while (progress < 1.5f)
         {
-            greenLight.GetComponent<Light>().intensity = Mathf.Lerp(0, 60, progress);
+            greenLight.GetComponent<Light>().intensity = Mathf.Lerp(0, 10, progress);
             yield return new WaitForEndOfFrame();
             progress += Time.deltaTime;
         }

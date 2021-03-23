@@ -9,37 +9,52 @@ public class RespawnPointScript : MonoBehaviour
 
     public UIManager uiManager;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
        if (other.tag == "Player")
         {
-         //   uiManager.RespawnAnim();
+       
             RespawPlayer(other.gameObject);
+        }
+       else if (other.GetComponent<PowerUpScript>() != null)
+        {
+            StartCoroutine(PowerUpDestroyCoroutine(other.gameObject));
+           // destroyAnim(other.gameObject);
+          //  RespawnPowerUp(other.gameObject);
         }
         else
         {
-            Destroy(other.gameObject);
+            destroyAnim(other.gameObject);
+            Destroy(other.gameObject,0.5f);
         }
 
     }
 
-    private void RespawPlayer(GameObject player)
+    protected void RespawPlayer(GameObject player)
     {
         uiManager.RespawnAnim();
         player.transform.position = Point.transform.position;
     }
+
+    protected IEnumerator PowerUpDestroyCoroutine(GameObject other )
+    {
+        destroyAnim(other);
+        yield return new WaitForSeconds(0.5f);
+        RespawnPowerUp(other);
+
+
+    }
+
+    protected void RespawnPowerUp(GameObject powerUp)
+    {
+
+        powerUp.transform.position = Point.transform.position;
+        LeanTween.scale(powerUp, Vector3.one, 0.1f);
+    }
+
+    protected void destroyAnim(GameObject other)
+    {
+        LeanTween.scale(other, Vector3.zero, 0.5f);
+    }
+
 }

@@ -11,7 +11,7 @@ public class QuestGiverScript : MonoBehaviour
     public HandlingQuests player;
 
     public NPCInteraction npcInteraction;
-    public ItemInteraction itemInteraction;
+    public Interaction_PowerUP itemInteraction;
 
     private GameObject[] items;
 

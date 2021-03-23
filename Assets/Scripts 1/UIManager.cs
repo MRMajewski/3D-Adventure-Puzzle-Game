@@ -25,11 +25,14 @@ public class UIManager : MonoBehaviour
 
     public Button throwingButton;
 
+    public Button jumpingButton;
+
     [SerializeField]
     private GameObject OnRoomEnterPanel;
 
     [SerializeField]
     private TextMeshProUGUI OnRoomEnterText;
+
 
 
     // Start is called before the first frame update
@@ -38,6 +41,7 @@ public class UIManager : MonoBehaviour
         PausePanel.SetActive(false);
         HUDPanel.SetActive(true);
         throwingButton.image.fillAmount = 0;
+        StartCoroutine(FadeCoroutine(3f));
 
     }
 
@@ -78,6 +82,13 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void JumpingUI(float jumpPower, float jumpMaxPower)
+    {
+        jumpingButton.image.fillAmount = jumpPower / jumpMaxPower;
+
+    }
+
+
     public void RoomEnterUIAnimation(string text)
     {
         var sizeY = GUIPanel.GetComponentInChildren<RectTransform>().rect.height;
@@ -98,17 +109,12 @@ public class UIManager : MonoBehaviour
     public void RespawnAnim()
     {
         StartCoroutine(FadeCoroutine());
+    }
 
-        //LeanTween.sequence()
-        // .append(LeanTween.alpha(BlackPanel.gameObject, 0f, 0f))
-        // .append(0.5f)
-        // .append(LeanTween.alpha(BlackPanel.gameObject, 1f, 1f));
 
-      //  LeanTween.alphaCanvas(BlackPanel.GetComponent<CanvasGroup>(), 1f, 2f);
-     //   Debug.Log("AlphaCanvas jest na 1");
-       // StartCoroutine(FadeCoroutine());
-      //  LeanTween.alphaCanvas(BlackPanel.GetComponent<CanvasGroup>(), 0.5f, 2f);
-     //   Debug.Log("AlphaCanvas jest na 0");
+    public void EndGameAnim()
+    {
+        StartCoroutine(FadeCoroutineEndGame(0.5f));
     }
 
 
@@ -127,6 +133,37 @@ public class UIManager : MonoBehaviour
         
     }
 
+
+    IEnumerator FadeCoroutine(float time)
+    {
+        BlackPanel.alpha = 1f;
+
+       float progress = 0f;
+
+        while (progress < time)
+        {
+            BlackPanel.alpha = Mathf.Lerp(1, 0, progress);
+            yield return new WaitForEndOfFrame();
+            progress += Time.deltaTime;
+        }
+
+    }
+
+
+    IEnumerator FadeCoroutineEndGame(float time)
+    {
+        BlackPanel.alpha = 0f;
+
+        float progress = 0f;
+
+        while (progress < time)
+        {
+            BlackPanel.alpha = Mathf.Lerp(0, 1, progress);
+            yield return new WaitForEndOfFrame();
+            progress += Time.deltaTime;
+        }
+
+    }
 
 
 

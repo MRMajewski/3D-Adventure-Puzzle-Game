@@ -14,14 +14,14 @@ public class PauseController : MonoBehaviour
     public GameObject player;
 
     private NPCInteraction npcInteraction;
-    private ItemInteraction ItemInteraction;
+    private Interaction_PowerUP ItemInteraction;
 
     // Start is called before the first frame update
     void Start()
     {
         PausePanel.SetActive(false);
         npcInteraction = player.GetComponent<NPCInteraction>();
-        ItemInteraction = player.GetComponent<ItemInteraction>();
+        ItemInteraction = player.GetComponent<Interaction_PowerUP>();
 
     }
 

@@ -16,6 +16,7 @@ public class SentryOnWall : MonoBehaviour
     public float coolingTime;
 
     public float sentrySpeed;
+    public float sentrySpeedOnReturn;
 
 
     public SentrySystem sentrySystem;
@@ -23,12 +24,16 @@ public class SentryOnWall : MonoBehaviour
 
     public Transform target;
 
+    public Transform defaultPos;
+
     [ContextMenu("Shoot")]
 
 
     private void Awake()
     {
-          coolingTime = cooldownTime;
+          coolingTime = cooldownTime;     
+
+
     }
 
     void Update()
@@ -45,9 +50,7 @@ public class SentryOnWall : MonoBehaviour
                 coolingTime -= Time.deltaTime;
             }
             else if (coolingTime <= 0)
-            {
-                Debug.Log(transform.rotation);
-                Debug.Log(transform.position - target.position);
+            {              
                 if (IsLockedOnTarget())
                 {
 
@@ -62,6 +65,8 @@ public class SentryOnWall : MonoBehaviour
         else
         {
             coolingTime = 0;
+            returnTodefaultPosition();
+
         }
     }
 
@@ -82,10 +87,21 @@ public class SentryOnWall : MonoBehaviour
         direction = direction * (-1);
 
         transform.rotation = Quaternion.RotateTowards
-            (transform.rotation, Quaternion.LookRotation(direction), Time.time * sentrySpeed);
+            (transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * sentrySpeed);
     }
 
-    private bool IsLockedOnTarget()
+    private void returnTodefaultPosition()
+    {
+        Vector3 direction = this.transform.position - defaultPos.position;
+        direction = direction * (-1);
+
+        transform.rotation = Quaternion.RotateTowards
+            (transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * sentrySpeedOnReturn);
+    }
+
+
+
+        private bool IsLockedOnTarget()
     {
         Vector3 direction = this.transform.position - target.position;
         // direction = new Vector3(direction.x * (-1), direction.y * (-1), direction.z * (-1));

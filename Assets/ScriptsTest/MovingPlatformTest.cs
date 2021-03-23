@@ -1,16 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingPlatformTest : MonoBehaviour
 {
-    public Transform firstPos;
-    public Transform secondPos;
+
+    public bool isGoingBack = false;
 
     public Transform platform;
     public ControlMovingPlatform control;
 
-    public GameObject controlGameObject;
+    public bool isRouteLonger = false;
+
+    public Transform[] route;
 
      Vector3 nextPos;
     //Transform nextPos;
@@ -18,32 +21,47 @@ public class MovingPlatformTest : MonoBehaviour
     public float speed;
     // Update is called once per frame
 
+    public int routeIndex=0;
 
     private void Start()
     {
-       // platformTest.transform.position = firstPos.position;
-        transform.position = firstPos.position;
-       // platform.position = firstPos.position;
+        transform.position = route[0].position;
+
     }
     void Update()
     {
-        if(control.isActive)
-   //   if(controlGameObject.GetComponent<ControlMovingPlatform>().isActive)
-            MovePlatform();
+        if (control.isActive)
+
+            MovePlatform(route);
 
     }
 
-    public void MovePlatform()
+    //public void MovePlatform()
+    //{
+    //     if(transform.position==firstPos.position)
+    //    {
+    //        nextPos = secondPos.position;
+    //    }
+    //     else if (transform.position ==secondPos.position)
+    //    {
+    //        nextPos = firstPos.position;
+    //    }
+    //    transform.position = Vector3.MoveTowards(transform.position, nextPos, Time.deltaTime * speed);
+    //}
+
+
+    public void MovePlatform(Transform[] route)
     {
-         if(transform.position==firstPos.position)
+        transform.position = Vector3.MoveTowards(transform.position, route[routeIndex].position, Time.deltaTime * speed);
+
+        if (transform.position == route[routeIndex].position) routeIndex++;
+
+        if (routeIndex == route.Length)
         {
-            nextPos = secondPos.position;
-        }
-         else if (transform.position ==secondPos.position)
-        {
-            nextPos = firstPos.position;
-        }
-        transform.position = Vector3.MoveTowards(transform.position, nextPos, Time.deltaTime * speed);
+
+            Array.Reverse(route);
+            routeIndex = 0;
+        }   
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -62,30 +80,4 @@ public class MovingPlatformTest : MonoBehaviour
         }
     }
 
-
-    //public void MovePlatformTest()
-    //{
-    //    if (platform.position == firstPos.position)
-    //    {
-    //        nextPos = secondPos.position;
-    //    }
-    //    else if (platform.position == secondPos.position)
-    //    {
-    //        nextPos = firstPos.position;
-    //    }
-    //    platform.position = Vector3.MoveTowards(transform.position, nextPos, Time.deltaTime * speed);
-    //}
-
-    //public void MovePlatformTest2()
-    //{
-    //    if (platformTest.transform.position == firstPos.position)
-    //    {
-    //        nextPos = secondPos.position;
-    //    }
-    //    else if (platformTest.transform.position == secondPos.position)
-    //    {
-    //        nextPos = firstPos.position;
-    //    }
-    //    platformTest.transform.position = Vector3.MoveTowards(transform.position, nextPos, Time.deltaTime * speed);
-    //}
 }

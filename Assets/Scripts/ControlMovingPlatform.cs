@@ -16,7 +16,6 @@ public class ControlMovingPlatform : UseTemplate
 
     public bool isActive = false;
 
-    public bool canTurnOffOn = false;
 
   //  private bool isActive = false;
 
@@ -55,40 +54,44 @@ public class ControlMovingPlatform : UseTemplate
     {
         //    Debug.Log(objectUsed.name);
        // this.objectUsed.GetComponent<ControlMovingPlatform>().ControlPlatform();
+
        this.ControlPlatform();
        
     }
 
 
 
-    private void Update()
-    {
+    //private void Update()
+    //{
 
 
-            if (itemInteraction.CanBeUsed)
-            {
-                if (Input.GetMouseButtonUp(0))
-                {    
-                    Use();
-                }
-            }
+    //        if (this.itemInteraction.CanBeUsed&&this.canTurnOffOn)
+    //        {
+    //            if (Input.GetMouseButtonUp(0))
+    //            {    
+    //                this.Use();
+    //            }
+    //        }
         
-    }
+    //}
 
-    private void OnMouseEnter()
-    {
-        objectUsed = itemInteraction.selectionObject;
-        objectUsed.GetComponent<ControlMovingPlatform>().canTurnOffOn = true;
+    //private void OnMouseEnter()
+    //{
+    //    objectUsed = itemInteraction.selectionObject;
 
-        textUI.text = "Control platform";
-    }
-
-    private void OnMouseExit()
-    {
     
-        objectUsed = itemInteraction.selectionObject;
+    //    this.isUsed = true;
+    // //   objectUsed.GetComponent<ControlMovingPlatform>().canTurnOffOn = true;
+
+    //    textUI.text = "Control platform";
+    //}
+
+    //private void OnMouseExit()
+    //{
+    //    this.isUsed = false;
+    //    objectUsed = itemInteraction.selectionObject;
        
 
-    }
+    //}
 
 }

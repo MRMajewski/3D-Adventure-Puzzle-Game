@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UseTemplate : MonoBehaviour
 {
-    public ItemInteraction itemInteraction;
+    // public ItemInteraction itemInteraction;
+    public Interaction_UsingItem itemInteraction;
 
     public bool isUsed = false;
 
@@ -12,7 +13,7 @@ public class UseTemplate : MonoBehaviour
 
     private void Awake()
     {
-        itemInteraction = FindObjectOfType<ItemInteraction>();
+        itemInteraction = FindObjectOfType<Interaction_UsingItem>();
        
     }
 
@@ -25,7 +26,8 @@ public class UseTemplate : MonoBehaviour
 
             Debug.Log("Można użyć");
             if (Input.GetMouseButtonUp(0))
-            {           
+            {   
+                if(isUsed)
                 Use();
              //   Use();
             }
@@ -36,6 +38,17 @@ public class UseTemplate : MonoBehaviour
     public virtual void Use()
     {
         Debug.Log("Use zadzaiałało ale w Template");
+    }
+
+    private void OnMouseEnter()
+    {
+        this.isUsed = true;
+    }
+
+    private void OnMouseExit()
+    {
+         
+        this.isUsed = false;
     }
 }
 

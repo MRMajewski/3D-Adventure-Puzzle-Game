@@ -6,7 +6,7 @@ using UnityEngine;
 public class PowerUpScript : MonoBehaviour
 {
 
-    private ItemInteraction itemInteraction;
+    private Interaction_PowerUp itemInteraction;
     private PlayerStatistics player;
 
    // public TextMeshProUGUI panelText;
@@ -27,7 +27,7 @@ public class PowerUpScript : MonoBehaviour
 
     private void Awake()
     {
-        itemInteraction = FindObjectOfType<ItemInteraction>();
+        itemInteraction = FindObjectOfType<Interaction_PowerUp>();
         player = FindObjectOfType<PlayerStatistics>();
     }
 
@@ -51,32 +51,44 @@ public class PowerUpScript : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Debug.Log(itemInteraction.IsPowerUp);
         if (!itemInteraction.IsPowerUp) return;
         else
         {
             switch(powerUpType)
             {
                 case PowerUpType.Throw:
+
                     PowerUpThrow(value);
-                    Debug.Log("Widzi Throw");
 
                     break;
 
                 case PowerUpType.Jump:
 
                     PowerUpJump(value);
-                    Debug.Log("Widzi Jump");
   
                     break;
 
                 case PowerUpType.Run:
 
                     PowerUpRun(value);
-                    Debug.Log("Widzi Run");
-
                     break;
             }
-            Destroy(this.gameObject);
+            PickUpAnim();
+            Destroy(this.gameObject,.9f);
         }
+    }
+
+
+    private void PickUpAnim()
+    {
+           LeanTween.moveLocalY(this.gameObject, 0.65f, 0.5f);
+
+        LeanTween.sequence().
+        append(LeanTween.rotateY(this.gameObject, 90f, 0.5f)).
+        append(LeanTween.scale(this.gameObject, Vector3.zero, 0.4f));
+
+      
+
     }
 }
