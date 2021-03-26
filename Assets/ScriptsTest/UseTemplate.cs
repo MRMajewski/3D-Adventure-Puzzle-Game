@@ -11,10 +11,12 @@ public class UseTemplate : MonoBehaviour
 
     public GameObject objectUsed;
 
+    public AudioManager audio;
+
     private void Awake()
     {
         itemInteraction = FindObjectOfType<Interaction_UsingItem>();
-       
+        audio = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -28,7 +30,12 @@ public class UseTemplate : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {   
                 if(isUsed)
-                Use();
+                {
+                    audio.Play("Use");
+                    Use();
+
+                }
+               
              //   Use();
             }
         }

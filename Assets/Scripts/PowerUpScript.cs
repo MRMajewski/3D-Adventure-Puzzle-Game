@@ -8,6 +8,7 @@ public class PowerUpScript : MonoBehaviour
 
     private Interaction_PowerUp itemInteraction;
     private PlayerStatistics player;
+    private AudioManager audio;
 
    // public TextMeshProUGUI panelText;
 
@@ -29,6 +30,7 @@ public class PowerUpScript : MonoBehaviour
     {
         itemInteraction = FindObjectOfType<Interaction_PowerUp>();
         player = FindObjectOfType<PlayerStatistics>();
+        audio = FindObjectOfType<AudioManager>();
     }
 
 
@@ -74,6 +76,7 @@ public class PowerUpScript : MonoBehaviour
                     PowerUpRun(value);
                     break;
             }
+            audio.Play("PickUpPowerUp");
             PickUpAnim();
             Destroy(this.gameObject,.9f);
         }

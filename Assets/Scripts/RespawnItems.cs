@@ -36,48 +36,6 @@ public class RespawnItems : UseTemplate
         RespawnItem();
     }
 
-    //private void Update()
-    //{
-
-    //    if (canRespawn)
-    //    {
-    //        Use();
-    //        canRespawn = false;
-    //        coolingTime = cooldownTime;
-    //    }
-    //    else
-    //    {
-    //        coolingTime -= Time.deltaTime;
-    //        if (coolingTime <= 0)
-    //        {
-    //            canRespawn = true;
-    //        }
-    //    }
-    //}
-    //private void Update()
-    //{
-
-    //    if (itemInteraction.CanBeUsed && canRespawn)
-    //    {
-
-    //        Debug.Log("Można użyć");
-    //        if (Input.GetMouseButtonUp(0))
-    //        {
-    //            Use();
-    //            canRespawn = false;
-    //            coolingTime = cooldownTime;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        coolingTime -= Time.deltaTime;
-    //        if (coolingTime <= 0)
-    //        {
-    //            canRespawn = true;
-    //        }
-    //    }
-    //}
-
     private void Update()
     {
         if(coolingTime>0)

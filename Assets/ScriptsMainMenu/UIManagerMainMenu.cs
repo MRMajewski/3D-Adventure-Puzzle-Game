@@ -18,6 +18,8 @@ public class UIManagerMainMenu : MonoBehaviour
 
     public CanvasGroup mainPanel;
 
+    public AudioManager audio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +82,7 @@ public class UIManagerMainMenu : MonoBehaviour
 
     IEnumerator StartGameCoroutine()
     {
+        audio.Play("Start");
         LeanTween.alphaCanvas(mainPanel, 0f, 1f);
 
         LeanTween.move(cameraObject, cameraEndPoint.position, 2f).setEaseInCirc();

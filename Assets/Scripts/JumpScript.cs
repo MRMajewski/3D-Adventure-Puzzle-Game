@@ -20,6 +20,8 @@ public class JumpScript : MonoBehaviour
 
     public UIManager UIManager;
 
+    public AudioManager audio;
+
 
     void Reset()
     {
@@ -61,7 +63,7 @@ public class JumpScript : MonoBehaviour
         }
         if (Input.GetButtonUp("Jump"))
         {
-
+            audio.Play("Jump");
             UIManager.JumpingUI(0, jumpMaxForce);
 
             if (jumpForce >= jumpMaxForce) jumpForce = jumpMaxForce;

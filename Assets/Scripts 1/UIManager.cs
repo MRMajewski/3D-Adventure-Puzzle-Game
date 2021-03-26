@@ -50,7 +50,8 @@ public class UIManager : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.Escape))
         {
-            Pause();         
+            Application.Quit();
+          //  Pause();         
         }
     }
 

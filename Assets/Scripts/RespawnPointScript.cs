@@ -9,6 +9,8 @@ public class RespawnPointScript : MonoBehaviour
 
     public UIManager uiManager;
 
+    public AudioManager audio;
+
     protected virtual void OnTriggerEnter(Collider other)
     {
        if (other.tag == "Player")
@@ -19,11 +21,11 @@ public class RespawnPointScript : MonoBehaviour
        else if (other.GetComponent<PowerUpScript>() != null)
         {
             StartCoroutine(PowerUpDestroyCoroutine(other.gameObject));
-           // destroyAnim(other.gameObject);
-          //  RespawnPowerUp(other.gameObject);
+
         }
         else
         {
+            audio.Play("Destroy");
             destroyAnim(other.gameObject);
             Destroy(other.gameObject,0.5f);
         }
@@ -33,11 +35,13 @@ public class RespawnPointScript : MonoBehaviour
     protected void RespawPlayer(GameObject player)
     {
         uiManager.RespawnAnim();
+        audio.Play("RespawnPlayer");
         player.transform.position = Point.transform.position;
     }
 
     protected IEnumerator PowerUpDestroyCoroutine(GameObject other )
     {
+
         destroyAnim(other);
         yield return new WaitForSeconds(0.5f);
         RespawnPowerUp(other);
