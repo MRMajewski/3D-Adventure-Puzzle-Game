@@ -34,6 +34,7 @@ public class JumpScript : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         playerStatistics.SetJumpPower(playerStatistics.PlayerJumpPower);
+      //  audio = FindObjectOfType<AudioManager>();
 
     }
 

@@ -1385,6 +1385,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!1 &42093232
 GameObject:
   m_ObjectHideFlags: 0
@@ -4601,6 +4605,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!1001 &117537511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4856,6 +4864,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 0}
+  alphaValue: 0.5
 --- !u!54 &124056448
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9815,6 +9827,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!54 &286660683
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14571,6 +14587,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!1001 &457567025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19247,7 +19267,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 8368221339997941117}
+    m_TransformParent: {fileID: 8154913826162774979}
     m_Modifications:
     - target: {fileID: 8118222317223282594, guid: 97d2cdc466f4fb742a0e8244a78f343c,
         type: 3}
@@ -19267,42 +19287,42 @@ PrefabInstance:
     - target: {fileID: 8122283795072060310, guid: 97d2cdc466f4fb742a0e8244a78f343c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8122283795072060310, guid: 97d2cdc466f4fb742a0e8244a78f343c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.55
+      value: -3.4987726
       objectReference: {fileID: 0}
     - target: {fileID: 8122283795072060310, guid: 97d2cdc466f4fb742a0e8244a78f343c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.28546524
+      value: 0.28149223
       objectReference: {fileID: 0}
     - target: {fileID: 8122283795072060310, guid: 97d2cdc466f4fb742a0e8244a78f343c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.48
+      value: 1.5087788
       objectReference: {fileID: 0}
     - target: {fileID: 8122283795072060310, guid: 97d2cdc466f4fb742a0e8244a78f343c,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999956
       objectReference: {fileID: 0}
     - target: {fileID: 8122283795072060310, guid: 97d2cdc466f4fb742a0e8244a78f343c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.000738774
       objectReference: {fileID: 0}
     - target: {fileID: 8122283795072060310, guid: 97d2cdc466f4fb742a0e8244a78f343c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.0023626615
       objectReference: {fileID: 0}
     - target: {fileID: 8122283795072060310, guid: 97d2cdc466f4fb742a0e8244a78f343c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.0016412315
       objectReference: {fileID: 0}
     - target: {fileID: 8122283795072060310, guid: 97d2cdc466f4fb742a0e8244a78f343c,
         type: 3}
@@ -23950,6 +23970,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!4 &729150941 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4934334823918846, guid: 7de2f47ecbafa1a429e13c54d20d7bdb,
@@ -24472,6 +24496,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!54 &742229105
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24566,6 +24594,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!1001 &747633778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39085,6 +39117,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!54 &1258137534
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -40359,6 +40395,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!1001 &1326922745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42122,6 +42162,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!1 &1367734519
 GameObject:
   m_ObjectHideFlags: 0
@@ -49858,7 +49902,7 @@ PrefabInstance:
     - target: {fileID: 1890346538964348471, guid: 13f465ede8acbf447931e05d0f74973d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1890346538964348471, guid: 13f465ede8acbf447931e05d0f74973d,
         type: 3}
@@ -50243,6 +50287,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -73.288
       objectReference: {fileID: 0}
+    - target: {fileID: 9005501147352667902, guid: 4fbb00aa696c2854799060c7c7e9edb0,
+        type: 3}
+      propertyPath: transparentMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
     - target: {fileID: 9006402526308314149, guid: 4fbb00aa696c2854799060c7c7e9edb0,
         type: 3}
       propertyPath: m_Name
@@ -54872,6 +54921,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!4 &1785917561 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4926591831143164, guid: dad5ac76e863a834aa3d74b266e53f15,
@@ -55390,6 +55443,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!4 &1802053800 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4926591831143164, guid: dad5ac76e863a834aa3d74b266e53f15,
@@ -59163,6 +59220,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!54 &1912314429
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -64690,6 +64751,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!4 &2105828370 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4926591831143164, guid: dad5ac76e863a834aa3d74b266e53f15,
@@ -67423,6 +67488,7 @@ Transform:
   - {fileID: 1912314427}
   - {fileID: 742229103}
   - {fileID: 1375342509}
+  - {fileID: 1956678408}
   m_Father: {fileID: 8154913827776371364}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -67445,6 +67511,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!54 &8154913826703880820
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -67480,6 +67550,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!54 &8154913826855585063
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -67588,6 +67662,10 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  alphaValue: 0.5
 --- !u!54 &8154913827103445412
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -71690,7 +71768,6 @@ Transform:
   - {fileID: 1767805247}
   - {fileID: 1318846223}
   - {fileID: 1740251501}
-  - {fileID: 1956678408}
   m_Father: {fileID: 8368221339466146842}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

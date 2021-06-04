@@ -52,10 +52,9 @@ public class ControlMovingPlatform : UseTemplate
 
     public override void Use()
     {
-        //    Debug.Log(objectUsed.name);
-       // this.objectUsed.GetComponent<ControlMovingPlatform>().ControlPlatform();
+        audio.Play("Use");
 
-       this.ControlPlatform();
+        this.ControlPlatform();
        
     }
 

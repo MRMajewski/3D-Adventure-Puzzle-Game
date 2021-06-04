@@ -19,6 +19,19 @@ public class PickUpScript : MonoBehaviour
 
     public UIManager UIManager;
 
+    public Material[] trueMaterials;
+
+
+
+    public Material[] TransparentMaterials;
+
+
+    public Material transparentMaterial;
+
+  
+
+    public float alphaValue = 0.1f;
+
 
     private void Awake()
     {
@@ -31,6 +44,13 @@ public class PickUpScript : MonoBehaviour
         force = 0f;
         //  maxForce = 50f;
         maxForce = playerStatistics.PlayerThrowPower;
+
+        
+        GetMaterials();
+        SetTransparentMaterialsArray();
+
+
+
     }
 
 
@@ -80,6 +100,8 @@ public class PickUpScript : MonoBehaviour
         if (!itemInteraction.CanBePicked) return;
         else
         {
+            ChangeToTransparency();
+
             UIManager.ThrowingUI(0, maxForce);
             IsPicked = true;
 
@@ -93,12 +115,17 @@ public class PickUpScript : MonoBehaviour
             rg.isKinematic = true;
 
             this.gameObject.GetComponent<Collider>().isTrigger = true;
-        
+
+          
+
+
         }       
     }
 
     private void OnMouseUp()
     {
+        ChangeToColor();
+
         force = 0;
         UIManager.ThrowingUI(0, maxForce);
         IsPicked = false;
@@ -110,7 +137,6 @@ public class PickUpScript : MonoBehaviour
         rg.isKinematic = false;
 
         this.gameObject.GetComponent<Collider>().isTrigger = false;
-
     }
 
     public void SetThrowPower(float maxForce)
@@ -118,5 +144,31 @@ public class PickUpScript : MonoBehaviour
         this.maxForce = maxForce;
     }
 
+    public void GetMaterials()
+    {
+        trueMaterials = this.GetComponent<MeshRenderer>().materials;
+    }
+
+    public void SetTransparentMaterialsArray()
+    {
+        TransparentMaterials = this.GetComponent<MeshRenderer>().materials;
+
+        for (int i = 0; i < TransparentMaterials.Length; i++)
+        {
+            TransparentMaterials[i] = transparentMaterial;
+        }
+    }
+
+
+    public void ChangeToTransparency()
+    {
+        this.GetComponent<MeshRenderer>().materials = TransparentMaterials;
+
+    }
+
+    public void ChangeToColor()
+    {
+        this.GetComponent<MeshRenderer>().materials = trueMaterials;
+    }
 
 }

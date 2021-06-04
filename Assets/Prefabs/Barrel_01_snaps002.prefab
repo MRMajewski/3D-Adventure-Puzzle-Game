@@ -133,3 +133,8 @@ MonoBehaviour:
   maxForce: 0
   IsPicked: 0
   UIManager: {fileID: 0}
+  trueMaterials: []
+  TransparentMaterials: []
+  transparentMaterial: {fileID: 2100000, guid: 6b58fee52bc82ac47a51306a88f269da, type: 2}
+  arrayLenght: 0
+  alphaValue: 0.1

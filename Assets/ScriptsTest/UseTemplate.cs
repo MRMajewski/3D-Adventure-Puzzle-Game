@@ -31,7 +31,7 @@ public class UseTemplate : MonoBehaviour
             {   
                 if(isUsed)
                 {
-                    audio.Play("Use");
+                  
                     Use();
 
                 }

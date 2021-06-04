@@ -33,6 +33,7 @@ public class RespawnItems : UseTemplate
 
     public override void Use()
     {
+        audio.Play("Use");
         RespawnItem();
     }
 

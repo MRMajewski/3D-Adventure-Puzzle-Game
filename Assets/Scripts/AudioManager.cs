@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 
@@ -12,14 +13,16 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-            instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-        DontDestroyOnLoad(gameObject);
+        // uncomment this part if you want only one AudioManager in all scenes
+
+        //if (instance == null)
+        //    instance = this;
+        //else
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}
+        //DontDestroyOnLoad(gameObject);
 
         foreach (Sound s in sounds)
         {
@@ -32,6 +35,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        if(SceneManager.GetActiveScene().buildIndex ==1)
         Play("OST");
 
     }
