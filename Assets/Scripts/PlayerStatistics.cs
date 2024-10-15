@@ -1,31 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class PlayerStatistics : MonoBehaviour
 {
+    [SerializeField]
+    private float playerThrowPower=0;
+    [SerializeField]
+    private float playerJumpPower=0;
+    [SerializeField]
+    private float playerMovementSpeed=2;
 
-    public float PlayerThrowPower;
-    public float PlayerJumpPower;
-    public float PlayerMovementSpeed;
+    public float PlayerThrowPower { get => playerThrowPower; }
+    public float PlayerJumpPower  { get => playerJumpPower; }
+    public float PlayerMovementSpeed { get => playerMovementSpeed; }
 
-    public Jump jump;
-    public FirstPersonMovement movement;
-
-    public float SetThrowPower(float power)
+    public void InitPlayerStatistics()
     {
-        PlayerThrowPower = power;
-        return PlayerThrowPower;
+        PlayerController.Instance.JumpScript.SetJumpPower(this.playerJumpPower);
+        PlayerController.Instance.FirstPersonMovement.SetPlayerSpeed(this.playerMovementSpeed);
     }
 
-    public void SetJumpPower(float PlayerJumpPower)
+    public void SetThrowPower(float power)
     {
-        jump.SetJumpPower(this.PlayerJumpPower);
+        playerThrowPower += power;
     }
 
-    public void SetRunPower(float PlayerMovementSpeed)
+    public void SetJumpPower(float power)
     {
-        movement.SetPlayerSpeed(PlayerMovementSpeed);
+        playerJumpPower += power;
+        PlayerController.Instance.JumpScript.SetJumpPower(this.playerJumpPower);
+    }
+
+    public void SetRunPower(float power)
+    {
+        playerMovementSpeed += power;
+        PlayerController.Instance.FirstPersonMovement.SetPlayerSpeed(this.playerMovementSpeed);
     }
 
 }

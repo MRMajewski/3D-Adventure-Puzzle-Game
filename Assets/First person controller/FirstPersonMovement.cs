@@ -5,18 +5,15 @@ public class FirstPersonMovement : MonoBehaviour
     public float speed = 5;
     Vector2 velocity;
 
-    public PlayerStatistics playerStatistics;
-
+  //  public PlayerStatistics playerStatistics;
 
     void Awake()
     {
-        playerStatistics.SetRunPower(playerStatistics.PlayerMovementSpeed);
+      //  playerStatistics.SetRunPower(playerStatistics.PlayerMovementSpeed);
     }
-
 
     void FixedUpdate()
     {
-
         //SetPlayerSpeed();
         velocity.y = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         velocity.x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
@@ -27,5 +24,4 @@ public class FirstPersonMovement : MonoBehaviour
     {
         this.speed = speed;
     }
-
 }

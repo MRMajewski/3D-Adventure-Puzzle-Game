@@ -5,13 +5,10 @@ using UnityEngine;
 
 public class PowerUpScript : MonoBehaviour
 {
-
+    [SerializeField]
     private Interaction_PowerUp itemInteraction;
-    private PlayerStatistics player;
-    private AudioManager audio;
-
-   // public TextMeshProUGUI panelText;
-
+  //  private PlayerStatistics player;
+   // private AudioManager audio;
 
     [System.Serializable]
     public enum PowerUpType
@@ -29,26 +26,21 @@ public class PowerUpScript : MonoBehaviour
     private void Awake()
     {
         itemInteraction = FindObjectOfType<Interaction_PowerUp>();
-        player = FindObjectOfType<PlayerStatistics>();
-        audio = FindObjectOfType<AudioManager>();
     }
-
 
     public void PowerUpThrow(float value)
     {
-        player.PlayerThrowPower += value;
+        PlayerController.Instance.PlayerStatistics.SetThrowPower(value);
     }
 
     public void PowerUpJump(float value)
     {
-         player.PlayerJumpPower += value;
-        player.SetJumpPower(player.PlayerJumpPower );
+        PlayerController.Instance.PlayerStatistics.SetJumpPower(value);
     }
 
     public void PowerUpRun(float value)
     {
-        player.PlayerMovementSpeed += value;
-        player.SetRunPower(player.PlayerMovementSpeed);
+        PlayerController.Instance.PlayerStatistics.SetRunPower(value);
     }
 
     private void OnMouseDown()
@@ -76,7 +68,7 @@ public class PowerUpScript : MonoBehaviour
                     PowerUpRun(value);
                     break;
             }
-            audio.Play("PickUpPowerUp");
+            AudioManager.Instance.Play("PickUpPowerUp");
             PickUpAnim();
             Destroy(this.gameObject,.9f);
         }
@@ -90,8 +82,5 @@ public class PowerUpScript : MonoBehaviour
         LeanTween.sequence().
         append(LeanTween.rotateY(this.gameObject, 90f, 0.5f)).
         append(LeanTween.scale(this.gameObject, Vector3.zero, 0.4f));
-
-      
-
     }
 }

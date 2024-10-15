@@ -5,52 +5,45 @@ using UnityEngine.SceneManagement;
 
 public class UIManagerMainMenu : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject startButton;
 
-    public GameObject button1;
+    [SerializeField]
+    private GameObject exitButton;
 
-    public GameObject button2;
+    [SerializeField]
+    private GameObject titlePanel;
 
-    public GameObject titlePanel;
+    [SerializeField]
+    private GameObject cameraObject;
 
-    public GameObject cameraObject;
+    [SerializeField]
+    private Transform cameraEndPoint;
 
-    public Transform cameraEndPoint;
+    [SerializeField]
+    private CanvasGroup mainPanel;
 
-    public CanvasGroup mainPanel;
+    [SerializeField]
+    private AudioManager audio;
 
-    public AudioManager audio;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
+ 
     private void OnEnable()
     {
-        titleEnterTween();
-        buttonsEnterTween();
+        TitleEnterTween();
+        ButtonsEnterTween();
     }
 
-    public void titleEnterTween()
+    public void TitleEnterTween()
     {
         LeanTween.moveLocalY(titlePanel, 450f, 2f).setEaseInCubic();
     }
 
-
-    public void buttonsEnterTween()
+    public void ButtonsEnterTween()
     {
-        LeanTween.moveLocalX(button1, 0F, 2f).setEaseInBack();
+        LeanTween.moveLocalX(startButton, 0F, 2f).setEaseInBack();
         LeanTween.sequence().
             append(.5f).
-            append(LeanTween.moveLocalX(button2, 0f, 2f).setEaseInBack());        
+            append(LeanTween.moveLocalX(exitButton, 0f, 2f).setEaseInBack());        
     }
 
     public  void OnPointerEnter(GameObject obj)
@@ -63,15 +56,10 @@ public class UIManagerMainMenu : MonoBehaviour
         LeanTween.scale(obj, new Vector3(1f, 1f), .5f);
     }
 
-
-
     public void StartGame()
     {
         StartCoroutine(StartGameCoroutine());
 
-       // LeanTween.move(cameraObject, cameraEndPoint.position, 2f).setEaseInCirc();
-
-       // SceneManager.LoadScene(1);
     }
 
     public void ExitGame()
@@ -79,20 +67,15 @@ public class UIManagerMainMenu : MonoBehaviour
         Application.Quit();
     }
 
-
     IEnumerator StartGameCoroutine()
     {
         audio.Play("Start");
         LeanTween.alphaCanvas(mainPanel, 0f, 1f);
 
         LeanTween.move(cameraObject, cameraEndPoint.position, 2f).setEaseInCirc();
-
-
-        
-
+      
         yield  return  new WaitForSeconds(2f);
 
         SceneManager.LoadScene(1);
-
     }
 }

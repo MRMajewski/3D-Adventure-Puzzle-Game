@@ -33,7 +33,7 @@ public class JumpScript : MonoBehaviour
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-        playerStatistics.SetJumpPower(playerStatistics.PlayerJumpPower);
+      //  playerStatistics.SetJumpPower(playerStatistics.PlayerJumpPower);
       //  audio = FindObjectOfType<AudioManager>();
 
     }

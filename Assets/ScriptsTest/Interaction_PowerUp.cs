@@ -5,23 +5,9 @@ using UnityEngine;
 
 public class Interaction_PowerUp : Interaction
 {
-    //[System.Serializable]
-    //public enum PowerUpType
-    //{
-    //    Throw,
-    //    Jump,
-    //    Run
-    //}
 
     public TextMeshProUGUI text;
 
-   // public PowerUpType powerUpType;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -30,7 +16,6 @@ public class Interaction_PowerUp : Interaction
         {
             ResetSelection();
         }
-
 
         else if (SelectItem().GetComponent<PowerUpScript>() != null)
         {

@@ -8,7 +8,7 @@ public class Jump : MonoBehaviour
     public float jumpStrength;
     public event System.Action Jumped;
 
-    public PlayerStatistics playerStatistics;
+  //  public PlayerStatistics playerStatistics;
 
 
     void Reset()
@@ -21,7 +21,7 @@ public class Jump : MonoBehaviour
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-        playerStatistics.SetJumpPower(playerStatistics.PlayerJumpPower);
+      //  playerStatistics.SetJumpPower(playerStatistics.PlayerJumpPower);
         
     }
 
@@ -29,7 +29,6 @@ public class Jump : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && groundCheck.isGrounded)
         {
-         //   jumpStrength = playerStatistics.PlayerJumpPower;
             rigidbody.AddForce(Vector3.up * 100 * jumpStrength);
             Jumped?.Invoke();
         }
