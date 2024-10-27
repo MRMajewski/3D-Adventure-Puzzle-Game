@@ -38,5 +38,4 @@ public class PlayerStatistics : MonoBehaviour
         playerMovementSpeed += power;
         PlayerController.Instance.FirstPersonMovement.SetPlayerSpeed(this.playerMovementSpeed);
     }
-
 }

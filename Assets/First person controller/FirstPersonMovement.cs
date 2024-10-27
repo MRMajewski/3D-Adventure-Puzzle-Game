@@ -2,19 +2,16 @@
 
 public class FirstPersonMovement : MonoBehaviour
 {
-    public float speed = 5;
-    Vector2 velocity;
+    [SerializeField]
+    private float speed = 5;
+    
+    private Vector2 velocity;
 
-  //  public PlayerStatistics playerStatistics;
-
-    void Awake()
-    {
-      //  playerStatistics.SetRunPower(playerStatistics.PlayerMovementSpeed);
-    }
 
     void FixedUpdate()
     {
-        //SetPlayerSpeed();
+        if (!Input.anyKey) return;
+
         velocity.y = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         velocity.x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         transform.Translate(velocity.x, 0, velocity.y);
