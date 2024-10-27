@@ -22,7 +22,6 @@ public class PickUpScript : MonoBehaviour
     public Material[] trueMaterials;
 
 
-
     public Material[] TransparentMaterials;
 
 
@@ -44,13 +43,9 @@ public class PickUpScript : MonoBehaviour
         force = 0f;
         //  maxForce = 50f;
         maxForce = playerStatistics.PlayerThrowPower;
-
-        
+   
         GetMaterials();
         SetTransparentMaterialsArray();
-
-
-
     }
 
 

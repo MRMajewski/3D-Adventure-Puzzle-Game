@@ -6,11 +6,11 @@ public class PickUpTextScript : MonoBehaviour
 {
     public float scaleSize = 1.5f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        TextMovement();
-    }
+    //// Start is called before the first frame update
+    //void Start()
+    //{
+    //    TextMovement();
+    //}
 
     private void TextMovement()
     {

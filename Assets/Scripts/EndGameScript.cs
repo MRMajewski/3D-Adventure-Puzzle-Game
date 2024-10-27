@@ -5,22 +5,6 @@ using UnityEngine;
 
 public class EndGameScript : RespawnPointScript
 {
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     protected override void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -37,7 +21,6 @@ public class EndGameScript : RespawnPointScript
             destroyAnim(other.gameObject);
             Destroy(other.gameObject, 0.5f);
         }
-
     }
 
     private void EndGame()
@@ -47,10 +30,8 @@ public class EndGameScript : RespawnPointScript
 
     IEnumerator EndGameCoroutine()
     {
-        uiManager.EndGameAnim();
+        UIManager.Instance.EndGameAnim();
         yield return new WaitForSeconds(1f);
         Application.Quit();
     }
-
-
 }

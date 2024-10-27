@@ -5,53 +5,44 @@ using UnityEngine;
 
 public class RespawnPointScript : MonoBehaviour
 {
-    public Transform Point;
-
-    public UIManager uiManager;
-
-    public AudioManager audio;
+    [SerializeField]
+    private Transform Point;
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-       if (other.tag == "Player")
+        if (other.tag == "Player")
         {
-       
             RespawPlayer(other.gameObject);
         }
-       else if (other.GetComponent<PowerUpScript>() != null)
+        else if (other.GetComponent<PowerUpScript>() != null)
         {
             StartCoroutine(PowerUpDestroyCoroutine(other.gameObject));
 
         }
         else
         {
-            audio.Play("Destroy");
+            AudioManager.Instance.Play("Destroy");
             destroyAnim(other.gameObject);
-            Destroy(other.gameObject,0.5f);
+            Destroy(other.gameObject, 0.5f);
         }
-
     }
 
     protected void RespawPlayer(GameObject player)
     {
-        uiManager.RespawnAnim();
-        audio.Play("RespawnPlayer");
+        UIManager.Instance.RespawnAnim();
+        AudioManager.Instance.Play("RespawnPlayer");
         player.transform.position = Point.transform.position;
     }
 
-    protected IEnumerator PowerUpDestroyCoroutine(GameObject other )
+    protected IEnumerator PowerUpDestroyCoroutine(GameObject other)
     {
-
         destroyAnim(other);
         yield return new WaitForSeconds(0.5f);
         RespawnPowerUp(other);
-
-
     }
 
     protected void RespawnPowerUp(GameObject powerUp)
     {
-
         powerUp.transform.position = Point.transform.position;
         LeanTween.scale(powerUp, Vector3.one, 0.1f);
     }
@@ -60,5 +51,4 @@ public class RespawnPointScript : MonoBehaviour
     {
         LeanTween.scale(other, Vector3.zero, 0.5f);
     }
-
 }

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance { get; private set; } 
+
     public bool IsPaused = false;
 
     public FirstPersonLook cameraMove;
@@ -22,7 +24,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private CanvasGroup BlackPanel;
 
-
     public Button throwingButton;
 
     public Button jumpingButton;
@@ -34,20 +35,43 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI OnRoomEnterText;
 
 
+    public float scaleSize = 1.5f;
+
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+    }
 
     // Start is called before the first frame update
     void Start()
+    {
+        InitUI();
+    }
+
+    public void InitUI()
     {
         PausePanel.SetActive(false);
         HUDPanel.SetActive(true);
         throwingButton.image.fillAmount = 0;
         StartCoroutine(FadeCoroutine(3f));
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!Input.anyKey)
+            return;
+
         if(Input.GetKeyUp(KeyCode.Escape))
         {
             Application.Quit();
@@ -88,7 +112,10 @@ public class UIManager : MonoBehaviour
         jumpingButton.image.fillAmount = jumpPower / jumpMaxPower;
 
     }
-
+    private void TextMovement()
+    {
+        LeanTween.scale(this.gameObject, new Vector3(scaleSize, scaleSize, scaleSize), 1f).setLoopPingPong();
+    }
 
     public void RoomEnterUIAnimation(string text)
     {

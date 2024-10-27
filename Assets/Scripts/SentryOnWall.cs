@@ -4,45 +4,52 @@ using UnityEngine;
 
 public class SentryOnWall : MonoBehaviour
 {
-    public Transform player;
-    public bool targetInZone = false;
+   // [SerializeField]
+    private Transform player;
+    private bool targetInZone = false;
 
-    public Rigidbody ballPrefab;            //Prefab kuli
-    public Transform launchPosition;        //Pozycja z jakiej kula zacznie swój lot
-    public float force;                     //Siła wystrzału
-    public float destroyDelay;
+    [SerializeField]
+    private Rigidbody ballPrefab;
+    [SerializeField]
+    private Transform launchPosition;        //Pozycja z jakiej kula zacznie swój lot
+    [SerializeField]
+    private float force;                     //Siła wystrzału
+    [SerializeField]
+    private float destroyDelay;
 
-    public float cooldownTime;//Czas po jakim kula armatnia zostanie zniszczona
-    public float coolingTime;
+    [SerializeField]
+    private float cooldownTime;//Czas po jakim kula armatnia zostanie zniszczona
+    private float coolingTime;
 
-    public float sentrySpeed;
-    public float sentrySpeedOnReturn;
+    [SerializeField]
+    private float sentrySpeed;
+    [SerializeField]
+    private float sentrySpeedOnReturn;
+
+    [SerializeField]
+    private SentrySystem sentrySystem;
+
+    private Transform target;
+
+    [SerializeField]
+    private Transform defaultPos;
 
 
-    public SentrySystem sentrySystem;
-
-
-    public Transform target;
-
-    public Transform defaultPos;
-
-    [ContextMenu("Shoot")]
-
-
-    private void Awake()
+    private void Start()
     {
-          coolingTime = cooldownTime;     
+        InitSentry();
+    }
 
-
+    public void InitSentry()
+    {
+        coolingTime = cooldownTime;
+        player = PlayerController.Instance.FirstPersonMovement.transform;
     }
 
     void Update()
     {
-        if (sentrySystem.targetInZone)
+        if (sentrySystem.TargetInZone)
         {
-
-            //this.transform.LookAt(player);
-            //  followTarget(target);
             followTarget(player);
 
             if (coolingTime > 0)
@@ -50,35 +57,21 @@ public class SentryOnWall : MonoBehaviour
                 coolingTime -= Time.deltaTime;
             }
             else if (coolingTime <= 0)
-            {              
+            {
                 if (IsLockedOnTarget())
                 {
 
                     Shoot();
                     coolingTime = cooldownTime;
                 }
-
-              //  }
-
             }
         }
         else
         {
             coolingTime = 0;
             returnTodefaultPosition();
-
         }
     }
-
-    //private void followTarget(Transform target)
-    //{
-    //    Vector3 direction =  this.transform.position - target.position;
-    //    Debug.Log(direction);
-      
-    //    Quaternion toRotation = Quaternion.FromToRotation(transform.forward, direction);
-
-    //    transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, sentrySpeed * Time.deltaTime);
-    //}
 
 
     private void followTarget(Transform target)
@@ -100,27 +93,22 @@ public class SentryOnWall : MonoBehaviour
     }
 
 
-
-        private bool IsLockedOnTarget()
+    private bool IsLockedOnTarget()
     {
         Vector3 direction = this.transform.position - target.position;
-        // direction = new Vector3(direction.x * (-1), direction.y * (-1), direction.z * (-1));
         direction = direction * (-1);
-        // Debug.Log(direction);
         if (transform.rotation == Quaternion.LookRotation(direction))
             return true;
         else return false;
-       
-        
+
     }
 
+    [ContextMenu("Shoot")]
     public void Shoot()
     {
-       // Debug.Log("Strzał działa?");
         Rigidbody missile = Instantiate(ballPrefab, launchPosition.transform.position, launchPosition.transform.rotation);
 
         missile.AddForce(launchPosition.forward * force, ForceMode.Impulse);
-       // Destroy(missile.gameObject, destroyDelay);
     }
 
 }

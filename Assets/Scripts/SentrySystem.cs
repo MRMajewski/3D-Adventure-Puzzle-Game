@@ -4,32 +4,16 @@ using UnityEngine;
 
 public class SentrySystem : MonoBehaviour
 {
-    public bool targetInZone = false;
+    private bool targetInZone;
+    public bool TargetInZone { get => targetInZone; }
 
- //   public SentryOnWall sentry;
-
- //   public float cooldownTime;//Czas po jakim kula armatnia zostanie zniszczona
- //   public float coolingTime;
-
-
-    //void Update()
+    //private void OnTriggerStay(Collider other)
     //{
-    //    if (targetInZone)
-    //    {
-    //        if (coolingTime > 0)
-    //        {
-    //            coolingTime -= Time.deltaTime;
-    //        }
-    //        else if (coolingTime <= 0)
-    //        {
-    //            sentry.Shoot();
-    //            coolingTime = cooldownTime;
-
-    //        }
-    //    }
+    //    if (other.tag == "Player")
+    //        targetInZone = true;
     //}
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
             targetInZone = true;
@@ -40,7 +24,4 @@ public class SentrySystem : MonoBehaviour
         if (other.tag == "Player")
             targetInZone = false;
     }
-
-
-
 }
