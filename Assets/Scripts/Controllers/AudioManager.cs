@@ -6,22 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance { get; private set; } 
-  
+    public static AudioManager Instance { get; private set; }
+
     public Sound[] sounds;
 
     void Awake()
     {
-
-            if (Instance == null)
-            {
-                Instance = this; // Set the instance
-            }
-            else
-            {
-                Destroy(gameObject); // Destroy duplicate objects, not just the script
-                return;
-            }
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         foreach (Sound s in sounds)
         {
@@ -34,9 +33,8 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex ==1)
-        Play("OST");
-
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            Play("OST");
     }
 
     public void Play(string name)
@@ -44,5 +42,4 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
     }
-    
 }

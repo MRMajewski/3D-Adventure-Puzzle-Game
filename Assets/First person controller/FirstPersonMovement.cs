@@ -7,7 +7,6 @@ public class FirstPersonMovement : MonoBehaviour
     
     private Vector2 velocity;
 
-
     void FixedUpdate()
     {
         if (!Input.anyKey) return;

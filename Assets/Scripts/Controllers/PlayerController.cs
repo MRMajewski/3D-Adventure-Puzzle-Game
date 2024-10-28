@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController Instance { get; private set; } // Static instance for Singleton
+    public static PlayerController Instance { get; private set; }
 
     [SerializeField]
     private PlayerStatistics playerStatistics; 
@@ -27,10 +27,12 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(gameObject); 
             return;
-        }
-    
-        DontDestroyOnLoad(gameObject);
+        }    
+        DontDestroyOnLoad(gameObject);  
+    }
 
+    public void InitPlayer()
+    {
         playerStatistics.InitPlayerStatistics();
     }
 }

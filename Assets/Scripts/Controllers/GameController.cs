@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController Instance { get; private set; } // Static instance for Singleton
+    public static GameController Instance { get; private set; } 
 
     private void Awake()
     {
@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
 
     public void Init()
     {
-      //  playerStatistics.SetJumpPower(playerStatistics.PlayerJumpPower);
+        UIManager.Instance.InitUI();
+        PlayerController.Instance.InitPlayer();
     }
 }

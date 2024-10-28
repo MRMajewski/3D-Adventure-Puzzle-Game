@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class SentryOnWall : MonoBehaviour
 {
-   // [SerializeField]
-    private Transform player;
     private bool targetInZone = false;
 
     [SerializeField]
     private Rigidbody ballPrefab;
     [SerializeField]
-    private Transform launchPosition;        //Pozycja z jakiej kula zacznie swój lot
+    private Transform launchPosition;  
     [SerializeField]
-    private float force;                     //Siła wystrzału
+    private float force; 
     [SerializeField]
     private float destroyDelay;
 
     [SerializeField]
-    private float cooldownTime;//Czas po jakim kula armatnia zostanie zniszczona
+    private float cooldownTime;
     private float coolingTime;
 
     [SerializeField]
@@ -34,7 +32,6 @@ public class SentryOnWall : MonoBehaviour
     [SerializeField]
     private Transform defaultPos;
 
-
     private void Start()
     {
         InitSentry();
@@ -43,14 +40,14 @@ public class SentryOnWall : MonoBehaviour
     public void InitSentry()
     {
         coolingTime = cooldownTime;
-        player = PlayerController.Instance.FirstPersonMovement.transform;
+        target = PlayerController.Instance.FirstPersonMovement.transform;
     }
 
     void Update()
     {
         if (sentrySystem.TargetInZone)
         {
-            followTarget(player);
+            followTarget(target);
 
             if (coolingTime > 0)
             {
@@ -73,7 +70,6 @@ public class SentryOnWall : MonoBehaviour
         }
     }
 
-
     private void followTarget(Transform target)
     {
         Vector3 direction = this.transform.position - target.position;
@@ -92,7 +88,6 @@ public class SentryOnWall : MonoBehaviour
             (transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * sentrySpeedOnReturn);
     }
 
-
     private bool IsLockedOnTarget()
     {
         Vector3 direction = this.transform.position - target.position;
@@ -100,15 +95,12 @@ public class SentryOnWall : MonoBehaviour
         if (transform.rotation == Quaternion.LookRotation(direction))
             return true;
         else return false;
-
     }
 
     [ContextMenu("Shoot")]
     public void Shoot()
     {
         Rigidbody missile = Instantiate(ballPrefab, launchPosition.transform.position, launchPosition.transform.rotation);
-
         missile.AddForce(launchPosition.forward * force, ForceMode.Impulse);
     }
-
 }

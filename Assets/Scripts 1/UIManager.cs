@@ -52,12 +52,6 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        InitUI();
-    }
-
     public void InitUI()
     {
         PausePanel.SetActive(false);
@@ -67,7 +61,6 @@ public class UIManager : MonoBehaviour
         StartCoroutine(FadeCoroutine(3f));
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!Input.anyKey)
@@ -105,13 +98,11 @@ public class UIManager : MonoBehaviour
     public void ThrowingUI(float throwPower, float maxPower)
     {
         throwingButton.image.fillAmount= throwPower / maxPower;
-
     }
 
     public void JumpingUI(float jumpPower, float jumpMaxPower)
     {
         jumpingButton.image.fillAmount = jumpPower / jumpMaxPower;
-
     }
     private void TextMovement()
     {
@@ -140,13 +131,10 @@ public class UIManager : MonoBehaviour
         StartCoroutine(FadeCoroutine());
     }
 
-
     public void EndGameAnim()
     {
         StartCoroutine(FadeCoroutineEndGame(0.5f));
     }
-
-
     IEnumerator FadeCoroutine()
     {
         BlackPanel.alpha = 1f;
@@ -158,10 +146,8 @@ public class UIManager : MonoBehaviour
             BlackPanel.alpha = Mathf.Lerp(1, 0, progress);
             yield return new WaitForEndOfFrame();
             progress += Time.deltaTime;
-        }
-        
+        }      
     }
-
 
     IEnumerator FadeCoroutine(float time)
     {
@@ -175,9 +161,7 @@ public class UIManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
             progress += Time.deltaTime;
         }
-
     }
-
 
     IEnumerator FadeCoroutineEndGame(float time)
     {
@@ -191,9 +175,5 @@ public class UIManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
             progress += Time.deltaTime;
         }
-
     }
-
-
-
 }

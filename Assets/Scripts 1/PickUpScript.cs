@@ -21,16 +21,11 @@ public class PickUpScript : MonoBehaviour
 
     public Material[] trueMaterials;
 
-
     public Material[] TransparentMaterials;
-
 
     public Material transparentMaterial;
 
-  
-
     public float alphaValue = 0.1f;
-
 
     private void Awake()
     {
@@ -47,7 +42,6 @@ public class PickUpScript : MonoBehaviour
         GetMaterials();
         SetTransparentMaterialsArray();
     }
-
 
     private void Update()
     {
@@ -110,10 +104,6 @@ public class PickUpScript : MonoBehaviour
             rg.isKinematic = true;
 
             this.gameObject.GetComponent<Collider>().isTrigger = true;
-
-          
-
-
         }       
     }
 
