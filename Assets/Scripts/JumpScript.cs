@@ -5,84 +5,58 @@ using UnityEngine;
 public class JumpScript : MonoBehaviour
 {
     [SerializeField]
-     GroundCheck groundCheck;
-     Rigidbody rigidbody;
-    public float jumpStrength;
+    private GroundCheck groundCheck;
+    [SerializeField]
+    private Rigidbody rigidbody;
     public event System.Action Jumped;
 
     public PlayerStatistics playerStatistics;
 
+    private float jumpForce;
+    private float jumpMaxForce;
+    [SerializeField]
+    private float jumpUnit;
 
-    public float jumpForce;
-    public float jumpMaxForce;
-
-    public float jumpUnit;
-
-    public UIManager UIManager;
-
-    public AudioManager audio;
-
-
-    void Reset()
+    [SerializeField]
+    private UIManager UIManager;
+    private void LateUpdate()
     {
-        groundCheck = GetComponentInChildren<GroundCheck>();
-        if (!groundCheck)
-            groundCheck = GroundCheck.Create(transform);
-    }
-
-    void Awake()
-    {
-        rigidbody = GetComponent<Rigidbody>();
-      //  playerStatistics.SetJumpPower(playerStatistics.PlayerJumpPower);
-      //  audio = FindObjectOfType<AudioManager>();
-
-    }
-
-    void LateUpdate()
-    {
-        //if (Input.GetButtonDown("Jump") && groundCheck.isGrounded)
-        //{
-        //    //   jumpStrength = playerStatistics.PlayerJumpPower;
-        //    rigidbody.AddForce(Vector3.up * 100 * jumpStrength);
-        //    Jumped?.Invoke();
-        //}
-
-
-        jumpMaxForce = playerStatistics.PlayerJumpPower;
-        UIManager.JumpingUI(0, jumpMaxForce);
-
         if (Input.GetButton("Jump") && groundCheck.isGrounded)
         {
-
-
-            UIManager.JumpingUI(0, jumpMaxForce);
-
             jumpForce += Time.deltaTime * jumpUnit;
+            if (jumpForce > jumpMaxForce) 
+                jumpForce = jumpMaxForce;
 
             UIManager.JumpingUI(jumpForce, jumpMaxForce);
-
         }
-        if (Input.GetButtonUp("Jump"))
+
+        else if (Input.GetButtonUp("Jump") && groundCheck.isGrounded)
         {
-            audio.Play("Jump");
-            UIManager.JumpingUI(0, jumpMaxForce);
-
-            if (jumpForce >= jumpMaxForce) jumpForce = jumpMaxForce;
-
+            AudioManager.Instance.Play("Jump");
             Jump(jumpForce);
-            jumpForce = 0;
+            ResetJump();
+        }
+        else if(!groundCheck.isGrounded && jumpForce!=0)
+        {
+            ResetJump();
         }
     }
 
-    public void SetJumpPower(float jumpStrength)
+    public void ResetJump()
     {
-        this.jumpStrength = jumpStrength;
+        jumpForce = 0;
+        UIManager.JumpingUI(jumpForce, jumpMaxForce); 
     }
 
-    public void Jump(float jumpForce)
+    public void SetMaxJumpPower(float maxJumpPower)
     {
-            rigidbody.AddForce(Vector3.up * 100 * jumpForce);
-            Jumped?.Invoke();
+        this.jumpMaxForce = maxJumpPower;
+    }
+
+    public void Jump(float force)
+    {
+        rigidbody.AddForce(Vector3.up * force, ForceMode.Impulse);
+        Jumped?.Invoke(); 
     }
 }
 

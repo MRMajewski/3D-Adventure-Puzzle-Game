@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     
         DontDestroyOnLoad(gameObject);
 
-
         playerStatistics.InitPlayerStatistics();
     }
 }

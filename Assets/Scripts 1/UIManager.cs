@@ -63,6 +63,7 @@ public class UIManager : MonoBehaviour
         PausePanel.SetActive(false);
         HUDPanel.SetActive(true);
         throwingButton.image.fillAmount = 0;
+        jumpingButton.image.fillAmount = 0;
         StartCoroutine(FadeCoroutine(3f));
     }
 
