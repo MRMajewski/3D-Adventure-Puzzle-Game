@@ -116,13 +116,10 @@ public class UIManager : MonoBehaviour
 
         OnRoomEnterText.text = text;
         LeanTween.sequence()
-        //  .append(LeanTween.moveLocalY(OnRoomEnterPanel, 295f, 1f).setEaseOutCirc())
         .append(LeanTween.moveLocalY(OnRoomEnterPanel, sizeY * 0.45f, 1f).setEaseOutCirc())
 
-
-        .append(1f)
+       .append(1f)
        .append(LeanTween.moveLocalY(OnRoomEnterPanel, sizeY * .6f, 1f).setEaseOutCirc());
-        // .append(LeanTween.moveLocalY(OnRoomEnterPanel, 345, 1f).setEaseOutCirc());
         Debug.Log(sizeY * 0.1f);
     }
 

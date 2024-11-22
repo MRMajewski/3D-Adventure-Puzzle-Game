@@ -24,7 +24,7 @@ public class UIManagerMainMenu : MonoBehaviour
     private CanvasGroup mainPanel;
 
     [SerializeField]
-    private AudioManager audio;
+    private AudioManager audioManager;
 
  
     private void OnEnable()
@@ -59,17 +59,11 @@ public class UIManagerMainMenu : MonoBehaviour
     public void StartGame()
     {
         StartCoroutine(StartGameCoroutine());
-
-    }
-
-    public void ExitGame()
-    {
-        Application.Quit();
     }
 
     IEnumerator StartGameCoroutine()
     {
-        audio.Play("Start");
+        audioManager.Play("Start");
         LeanTween.alphaCanvas(mainPanel, 0f, 1f);
 
         LeanTween.move(cameraObject, cameraEndPoint.position, 2f).setEaseInCirc();
@@ -77,5 +71,10 @@ public class UIManagerMainMenu : MonoBehaviour
         yield  return  new WaitForSeconds(2f);
 
         SceneManager.LoadScene(1);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

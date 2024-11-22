@@ -25,7 +25,6 @@ public class GameController : MonoBehaviour
         Init();
     }
 
-
     public void Init()
     {
         UIManager.Instance.InitUI();
