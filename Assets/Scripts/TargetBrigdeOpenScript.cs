@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class TargetBrigdeOpenScript : MonoBehaviour
 {
-    public BridgeSystemScript bridgeSystem;
+    [SerializeField]
+    private BridgeSystemScript bridgeSystem;
 
-    public GameObject greenLight;
+    [SerializeField]
+    private GameObject greenLight;
 
     private bool isTriggerOn = false;
 
@@ -14,13 +16,12 @@ public class TargetBrigdeOpenScript : MonoBehaviour
     {
         if(!isTriggerOn)
         {
-            bridgeSystem.numberOfBridgesUp++;
+          
             bridgeSystem.TargetShot();
+            bridgeSystem.NumberOfBridgesUp++;
             StartCoroutine(LightOnCoroutine());
             isTriggerOn = true;
         }
-
-
     }
 
     IEnumerator LightOnCoroutine()

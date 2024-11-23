@@ -28,7 +28,7 @@ public class Interaction : MonoBehaviour
 
     protected Ray ray;
 
-    public GameObject selectionObject;
+ //   public GameObject selectionObject;
     // public GameObject selection;
 
     [ContextMenu("ResetRaycast")]
@@ -76,7 +76,7 @@ public class Interaction : MonoBehaviour
             powerUpPanel.SetActive(false);
             usePanel.SetActive(false);
 
-            selectionObject = null;
+           // selectionObject = null;
      //   }
       
         return;

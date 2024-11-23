@@ -17,18 +17,10 @@ public class MovingPlatformScript : MonoBehaviour
 
     public bool canBeUsed = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-      //  platform.transform.position = firstPos.position;
-       //  MovePlatform();
-    }
-
-    // Update is called once per frame
     void Update()
     {
  
-        if(control.isActive)
+        if(control.IsActive)
         {
             if (platform.transform.position == firstPos.position)
             {
@@ -40,9 +32,7 @@ public class MovingPlatformScript : MonoBehaviour
             }
             platform.transform.position = Vector3.MoveTowards(transform.position, nextPos, Time.deltaTime);
         }
-
     }
-
 
     public void MovePlatformTween()
     {
@@ -62,13 +52,5 @@ public class MovingPlatformScript : MonoBehaviour
         platform.transform.position = Vector3.MoveTowards(transform.position, nextPos, Time.deltaTime * speed);
     }
 
-       // platform.transform.position = Vector3.Lerp(firstPos.position, secondPos.position, Time.deltaTime * speed);
-     //   }
-    //    else if (platform.transform.position==secondPos.position)
-    //    {
-         //   platform.transform.position = Vector3.Lerp(secondPos.position, firstPos.position, Time.deltaTime * speed);
-      //  }
-       
-    
 }
 

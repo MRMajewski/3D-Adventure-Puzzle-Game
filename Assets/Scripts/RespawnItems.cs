@@ -5,35 +5,38 @@ using UnityEngine;
 
 public class RespawnItems : UseTemplate
 {
+    [SerializeField]
+    private GameObject item;
+    [SerializeField]
+    private Transform respawnPoint;
 
-    public GameObject item;
-    public Transform respawnPoint;
-
-    public Sprite yesSprite;
-    public Sprite noSprite;
+    [SerializeField]
+    private Sprite yesSprite;
+    [SerializeField]
+    private Sprite noSprite;
 
     private bool canRespawn = true;
-    public float cooldownTime = 10f;
+    [SerializeField]
+    private float cooldownTime = 10f;
 
-    public float coolingTime;
+    private float coolingTime;
 
-    public SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
 
-    public TextMeshProUGUI textUI;
+    [SerializeField]
+    private TextMeshProUGUI textUI;
 
     [ContextMenu("RespawnItem")]
 
     public void RespawnItem()
     {
-        Debug.Log("Działa RespawnItem");
-
         Instantiate(item, respawnPoint.transform.position, Quaternion.identity);
-
     }
 
     public override void Use()
     {
-        audio.Play("Use");
+        AudioManager.Instance.Play("Use");
         RespawnItem();
     }
 
@@ -50,7 +53,6 @@ public class RespawnItems : UseTemplate
             if (itemInteraction.CanBeUsed && canRespawn)
             {
 
-                Debug.Log("Można użyć");
                 if (Input.GetMouseButtonUp(0))
                 {
                     Use();

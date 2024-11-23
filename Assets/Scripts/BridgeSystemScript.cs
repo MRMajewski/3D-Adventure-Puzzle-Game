@@ -4,31 +4,20 @@ using UnityEngine;
 
 public class BridgeSystemScript : MonoBehaviour
 {
+    private int numberOfBridgesUp = 0;
 
-    public int numberOfBridgesUp = 0;
+    public int NumberOfBridgesUp { get=> numberOfBridgesUp; set=> numberOfBridgesUp=value; }
 
-    public GameObject[] bridgeSegments;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    private GameObject[] bridgeSegments;
 
     public void TargetShot()
     {
-        getUpBridgeSegment(numberOfBridgesUp - 1);
+        getUpBridgeSegment(numberOfBridgesUp);
     }
-
 
     public void getUpBridgeSegment(int index)
     {
         LeanTween.moveLocalY(bridgeSegments[index], 0.356f, 2f);
     }
-
 }

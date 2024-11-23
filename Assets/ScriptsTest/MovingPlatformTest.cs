@@ -19,7 +19,6 @@ public class MovingPlatformTest : MonoBehaviour
     //Transform nextPos;
 
     public float speed;
-    // Update is called once per frame
 
     public int routeIndex=0;
 
@@ -30,26 +29,11 @@ public class MovingPlatformTest : MonoBehaviour
     }
     void Update()
     {
-        if (control.isActive)
+        if (control.IsActive)
 
             MovePlatform(route);
 
     }
-
-    //public void MovePlatform()
-    //{
-    //     if(transform.position==firstPos.position)
-    //    {
-    //        nextPos = secondPos.position;
-    //    }
-    //     else if (transform.position ==secondPos.position)
-    //    {
-    //        nextPos = firstPos.position;
-    //    }
-    //    transform.position = Vector3.MoveTowards(transform.position, nextPos, Time.deltaTime * speed);
-    //}
-
-
     public void MovePlatform(Transform[] route)
     {
         transform.position = Vector3.MoveTowards(transform.position, route[routeIndex].position, Time.deltaTime * speed);

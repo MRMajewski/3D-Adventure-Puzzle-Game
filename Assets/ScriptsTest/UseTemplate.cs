@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class UseTemplate : MonoBehaviour
 {
-    // public ItemInteraction itemInteraction;
     public Interaction_UsingItem itemInteraction;
 
     public bool isUsed = false;
 
-    public GameObject objectUsed;
-
-    public AudioManager audio;
-
     private void Awake()
     {
         itemInteraction = FindObjectOfType<Interaction_UsingItem>();
-        audio = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -24,7 +18,7 @@ public class UseTemplate : MonoBehaviour
     {
         if (itemInteraction.CanBeUsed)
         {
-            objectUsed = itemInteraction.selectionObject;
+           // objectUsed = itemInteraction.selectionObject;
 
             Debug.Log("Można użyć");
             if (Input.GetMouseButtonUp(0))

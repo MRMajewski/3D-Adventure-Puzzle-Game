@@ -34,10 +34,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI OnRoomEnterText;
 
-
     public float scaleSize = 1.5f;
-
-
     private void Awake()
     {
         if (Instance == null)
@@ -68,8 +65,7 @@ public class UIManager : MonoBehaviour
 
         if(Input.GetKeyUp(KeyCode.Escape))
         {
-            Application.Quit();
-          //  Pause();         
+            Application.Quit();     
         }
     }
 

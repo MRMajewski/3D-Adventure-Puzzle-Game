@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class DoorsAutomatedScript : MonoBehaviour
 {
-    public Vector3 openPosition;
-    public Vector3 closePosition;
+    [SerializeField]
+    private Vector3 openPosition;
+    [SerializeField]
+    private Vector3 closePosition;
+    [SerializeField]
+    private float doorsSpeed;
 
-    public UIManager UIManager;
+    [SerializeField]
+    private Transform doors;
 
-    public float doorsSpeed;
-
-    public Transform doors;
-
-    public string textOnEnter;
-    // Start is called before the first frame update
-
-    private void Awake()
-    {
-        UIManager = FindObjectOfType<UIManager>();
-    }
-
+    [SerializeField]
+    private string textOnEnter;
 
     void Start()
     {
@@ -29,16 +24,14 @@ public class DoorsAutomatedScript : MonoBehaviour
 
     void OpenDoor()
     {
-        UIManager.RoomEnterUIAnimation(textOnEnter);
-        LeanTween.moveLocal(doors.gameObject, openPosition, doorsSpeed);
-     
+        UIManager.Instance.RoomEnterUIAnimation(textOnEnter);
+        LeanTween.moveLocal(doors.gameObject, openPosition, doorsSpeed);  
     }
 
     void CloseDoor()
     {
         LeanTween.moveLocal(doors.gameObject, closePosition, doorsSpeed);
     }
-
 
     private void OnTriggerEnter(Collider other)
     {

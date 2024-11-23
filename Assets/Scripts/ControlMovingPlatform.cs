@@ -6,20 +6,21 @@ using TMPro;
 public class ControlMovingPlatform : UseTemplate
 {
 
-    public Sprite yesSprite;
-    public Sprite noSprite;
+    [SerializeField]
+    private Sprite yesSprite;
+    [SerializeField]
+    private Sprite noSprite;
 
 
-    public SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
 
-    public TextMeshProUGUI textUI;
+    [SerializeField]
+    private TextMeshProUGUI textUI;
 
-    public bool isActive = false;
+    private bool isActive = false;
 
-
-  //  private bool isActive = false;
-
-
+    public bool IsActive { get => isActive; }
 
     public void ControlPlatform()
     {
@@ -49,48 +50,11 @@ public class ControlMovingPlatform : UseTemplate
         }
     }
 
-
     public override void Use()
     {
-        audio.Play("Use");
+      AudioManager.Instance.Play("Use");
 
         this.ControlPlatform();
        
     }
-
-
-
-    //private void Update()
-    //{
-
-
-    //        if (this.itemInteraction.CanBeUsed&&this.canTurnOffOn)
-    //        {
-    //            if (Input.GetMouseButtonUp(0))
-    //            {    
-    //                this.Use();
-    //            }
-    //        }
-        
-    //}
-
-    //private void OnMouseEnter()
-    //{
-    //    objectUsed = itemInteraction.selectionObject;
-
-    
-    //    this.isUsed = true;
-    // //   objectUsed.GetComponent<ControlMovingPlatform>().canTurnOffOn = true;
-
-    //    textUI.text = "Control platform";
-    //}
-
-    //private void OnMouseExit()
-    //{
-    //    this.isUsed = false;
-    //    objectUsed = itemInteraction.selectionObject;
-       
-
-    //}
-
 }
