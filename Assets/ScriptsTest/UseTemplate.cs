@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class UseTemplate : MonoBehaviour
 {
-    public Interaction_UsingItem itemInteraction;
+    [SerializeField]
+    protected Interaction_UsingItem itemInteraction;
 
     public bool isUsed = false;
 
     private void Awake()
     {
-        itemInteraction = FindObjectOfType<Interaction_UsingItem>();
+      //  itemInteraction = FindObjectOfType<Interaction_UsingItem>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (itemInteraction.CanBeUsed)
         {
-           // objectUsed = itemInteraction.selectionObject;
 
             Debug.Log("Można użyć");
             if (Input.GetMouseButtonUp(0))

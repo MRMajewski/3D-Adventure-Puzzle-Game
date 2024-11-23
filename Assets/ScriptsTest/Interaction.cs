@@ -5,16 +5,20 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
     [SerializeField]
-    private Camera camera;
+    private Camera currentCamera;
 
     private PickUpScript itemBeingSelected;
 
     [SerializeField]
     private LayerMask layerMask;
 
-    public bool CanBePicked;
-    public bool IsPowerUp;
-    public bool CanBeUsed;
+    protected bool canBePicked;
+    protected bool isPowerUp;
+    protected bool canBeUsed;
+
+    public bool CanBePicked {  get { return canBePicked; } }
+    public bool IsPowerUp { get { return isPowerUp; } }
+    public bool CanBeUsed { get { return canBeUsed; } }
 
     [SerializeField]
     protected GameObject pickUpPanel;
@@ -25,67 +29,47 @@ public class Interaction : MonoBehaviour
     [SerializeField]
     protected GameObject usePanel;
 
-
     protected Ray ray;
 
- //   public GameObject selectionObject;
-    // public GameObject selection;
-
     [ContextMenu("ResetRaycast")]
-    // Start is called before the first frame update
     void Start()
     {
-       pickUpPanel.SetActive(false);
+        pickUpPanel.SetActive(false);
         powerUpPanel.SetActive(false);
         usePanel.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-      //  SelectItem();
+        currentCamera = Camera.current;
     }
 
     public virtual Transform SelectItem()
     {
         Transform selection;
-        ray = camera.ScreenPointToRay(Input.mousePosition);
+        ray = currentCamera .ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(ray.origin, ray.direction * 2f, Color.red);
 
         RaycastHit hitInfo;
 
         if (Physics.Raycast(ray, out hitInfo, 2f))
         {
-            // var selection = hitInfo.transform;
-             selection = hitInfo.transform;           
+            selection = hitInfo.transform;
         }
         else selection = null;
         return selection;
-
     }
 
     public void ResetSelection()
     {
-
-      //  if (SelectItem() == null)
-       //     {
-            IsPowerUp = false;
-            CanBePicked = false;
-            CanBeUsed = false;
-            pickUpPanel.SetActive(false);
-            powerUpPanel.SetActive(false);
-            usePanel.SetActive(false);
-
-           // selectionObject = null;
-     //   }
-      
+        isPowerUp = false;
+        canBePicked = false;
+        canBeUsed = false;
+        pickUpPanel.SetActive(false);
+        powerUpPanel.SetActive(false);
+        usePanel.SetActive(false);
         return;
     }
 
-
     private void ResetRaycast()
     {
-        ray = camera.ScreenPointToRay(Input.mousePosition);
+        ray = currentCamera.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(ray.origin, ray.direction * 3f, Color.red);
     }
 }

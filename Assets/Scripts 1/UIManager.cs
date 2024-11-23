@@ -6,11 +6,13 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance { get; private set; } 
+    public static UIManager Instance { get; private set; }
 
-    public bool IsPaused = false;
+    [SerializeField]
+    private bool IsPaused = false;
 
-    public FirstPersonLook cameraMove;
+    [SerializeField]
+    private FirstPersonLook cameraMove;
 
     [SerializeField]
     private GameObject PausePanel;
@@ -24,9 +26,11 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private CanvasGroup BlackPanel;
 
-    public Button throwingButton;
+    [SerializeField]
+    private Button throwingButton;
 
-    public Button jumpingButton;
+    [SerializeField]
+    private Button jumpingButton;
 
     [SerializeField]
     private GameObject OnRoomEnterPanel;
@@ -34,7 +38,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI OnRoomEnterText;
 
-    public float scaleSize = 1.5f;
+    [SerializeField]
+    private float scaleSize = 1.5f;
+
     private void Awake()
     {
         if (Instance == null)
@@ -63,9 +69,9 @@ public class UIManager : MonoBehaviour
         if (!Input.anyKey)
             return;
 
-        if(Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
-            Application.Quit();     
+            Application.Quit();
         }
     }
 
@@ -73,7 +79,6 @@ public class UIManager : MonoBehaviour
     {
         if (!IsPaused)
         {
-          //  Cursor.lockState = CursorLockMode.Locked;
             PausePanel.SetActive(true);
             IsPaused = true;
             Time.timeScale = 0;
@@ -82,8 +87,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-         //  Cursor.lockState = CursorLockMode.None;
-            cameraMove.enabled = true;    
+            cameraMove.enabled = true;
             IsPaused = false;
             Time.timeScale = 1;
             PausePanel.SetActive(false);
@@ -93,7 +97,7 @@ public class UIManager : MonoBehaviour
 
     public void ThrowingUI(float throwPower, float maxPower)
     {
-        throwingButton.image.fillAmount= throwPower / maxPower;
+        throwingButton.image.fillAmount = throwPower / maxPower;
     }
 
     public void JumpingUI(float jumpPower, float jumpMaxPower)
@@ -131,22 +135,22 @@ public class UIManager : MonoBehaviour
     IEnumerator FadeCoroutine()
     {
         BlackPanel.alpha = 1f;
-     
+
         float progress = 0f;
 
-        while(progress<1.0f)
+        while (progress < 1.0f)
         {
             BlackPanel.alpha = Mathf.Lerp(1, 0, progress);
             yield return new WaitForEndOfFrame();
             progress += Time.deltaTime;
-        }      
+        }
     }
 
     IEnumerator FadeCoroutine(float time)
     {
         BlackPanel.alpha = 1f;
 
-       float progress = 0f;
+        float progress = 0f;
 
         while (progress < time)
         {

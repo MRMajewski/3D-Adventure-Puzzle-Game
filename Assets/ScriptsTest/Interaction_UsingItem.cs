@@ -5,10 +5,9 @@ using TMPro;
 
 public class Interaction_UsingItem : Interaction
 {
+    [SerializeField]
+    private TextMeshProUGUI text;
 
-    public TextMeshProUGUI text;
-
-    // Update is called once per frame
     void Update()
     {
         if (SelectItem() == null)
@@ -19,9 +18,8 @@ public class Interaction_UsingItem : Interaction
 
         else if (SelectItem().tag == "CanBeUsed")
         {
-            CanBeUsed = true;
-            
-            
+            canBeUsed = true;
+                       
 
             if (SelectItem().GetComponent<ControlMovingPlatform>() != null)
             {

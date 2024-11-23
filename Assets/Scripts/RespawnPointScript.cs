@@ -17,12 +17,11 @@ public class RespawnPointScript : MonoBehaviour
         else if (other.GetComponent<PowerUpScript>() != null)
         {
             StartCoroutine(PowerUpDestroyCoroutine(other.gameObject));
-
         }
         else
         {
             AudioManager.Instance.Play("Destroy");
-            destroyAnim(other.gameObject);
+            DestroyAnim(other.gameObject);
             Destroy(other.gameObject, 0.5f);
         }
     }
@@ -36,7 +35,7 @@ public class RespawnPointScript : MonoBehaviour
 
     protected IEnumerator PowerUpDestroyCoroutine(GameObject other)
     {
-        destroyAnim(other);
+        DestroyAnim(other);
         yield return new WaitForSeconds(0.5f);
         RespawnPowerUp(other);
     }
@@ -47,7 +46,7 @@ public class RespawnPointScript : MonoBehaviour
         LeanTween.scale(powerUp, Vector3.one, 0.1f);
     }
 
-    protected void destroyAnim(GameObject other)
+    protected void DestroyAnim(GameObject other)
     {
         LeanTween.scale(other, Vector3.zero, 0.5f);
     }

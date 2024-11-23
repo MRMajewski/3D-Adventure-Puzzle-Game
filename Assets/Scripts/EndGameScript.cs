@@ -14,11 +14,10 @@ public class EndGameScript : RespawnPointScript
         else if (other.GetComponent<PowerUpScript>() != null)
         {
             StartCoroutine(PowerUpDestroyCoroutine(other.gameObject));
-
         }
         else
         {
-            destroyAnim(other.gameObject);
+            DestroyAnim(other.gameObject);
             Destroy(other.gameObject, 0.5f);
         }
     }
